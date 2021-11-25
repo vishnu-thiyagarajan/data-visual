@@ -11,7 +11,7 @@ function NavBar() {
     >
       <Toolbar>
         <Typography variant="h6" noWrap component="div">
-          Import Data from excel inside Table
+          Import Data from excel
         </Typography>
       </Toolbar>
     </AppBar>

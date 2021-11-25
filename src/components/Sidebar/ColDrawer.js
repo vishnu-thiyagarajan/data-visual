@@ -5,7 +5,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
-import Column from "components/Column";
+import Column from "components/Sidebar/Column";
 import React from "react";
 
 const drawerWidth = 240;
@@ -27,13 +27,12 @@ function ColDrawer({ colDefs }) {
       <Box sx={{ overflow: "auto" }}>
         <List>
           <ListItem>
-            <ListItemText primary="Columns" />
+            <ListItemText>
+              <strong>Columns</strong>
+            </ListItemText>
           </ListItem>
           <Divider />
-          {colDefs &&
-            colDefs.map((col, index) => (
-              <Column key={index} title={col.title} id={col.id} />
-            ))}
+          {colDefs && colDefs.map((col) => <Column key={col.id} col={col} />)}
         </List>
       </Box>
     </Drawer>

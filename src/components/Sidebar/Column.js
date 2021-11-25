@@ -3,10 +3,10 @@ import ListItemText from "@mui/material/ListItemText";
 import React from "react";
 import { useDrag } from "react-dnd";
 
-function Column({ id, title }) {
+function Column(props) {
   const [{ isDragging }, drag] = useDrag(() => ({
-    type: "image",
-    item: { id: id },
+    type: "column",
+    item: props.col,
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
@@ -16,7 +16,7 @@ function Column({ id, title }) {
       ref={drag}
       style={{ border: isDragging ? "5px solid pink" : "0px" }}
     >
-      <ListItemText primary={title} />
+      <ListItemText primary={props.col.title} />
     </ListItem>
   );
 }

@@ -1,4 +1,4 @@
-import LandingPage from "components/LandingPage";
+import LandingPage from "components/Page/LandingPage";
 import React from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
