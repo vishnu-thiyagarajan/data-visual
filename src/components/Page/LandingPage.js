@@ -39,7 +39,6 @@ export default function LandingPage() {
         id: uniqueId(),
         stroke: randomHSL(),
       }));
-      console.log(heads);
       setColDefs(heads);
       fileData.splice(0, 1);
       setData(convertToJson(headers, fileData));
@@ -56,7 +55,7 @@ export default function LandingPage() {
       setColDefs([]);
     }
   };
-  // const downloadExcel = () => {};
+
   return (
     <Box sx={{ display: "flex" }} bgcolor="primary.light">
       <CssBaseline />
@@ -71,6 +70,7 @@ export default function LandingPage() {
               variant="contained"
               color="success"
               startIcon={<FileUploadIcon />}
+              component="span"
             >
               Upload Excel
             </Button>
