@@ -75,7 +75,11 @@ export default function LandingPage() {
               Upload Excel
             </Button>
           </label>
-          <a id="sample-file" href="./public/Sample_Data.xlsx" download>
+          <a
+            id="sample-file"
+            href="https://github.com/vishnu-thiyagarajan/data-visual/raw/main/public/Sample_Data.xlsx"
+            download
+          >
             <Button
               variant="contained"
               color="success"
