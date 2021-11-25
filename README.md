@@ -1,3 +1,7 @@
+This is a project to visualize a data from excel in table, barchart and linechart.\
+We can move the columns to table or chart by drag and drop.\
+This Project is hosted in https://data-visual.netlify.app \
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
