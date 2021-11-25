@@ -1,15 +1,24 @@
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
+import { styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
-import BarChartView from "components/widgets/BarChartView";
-import ColDrawer from "components/Sidebar/ColDrawer";
-import LineChartView from "components/widgets/LineChartView";
+import FileUploadIcon from "@mui/icons-material/FileUpload";
+import Stack from "@mui/material/Stack";
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import NavBar from "components/NavBar/NavBar";
+import ColDrawer from "components/Sidebar/ColDrawer";
+import BarChartView from "components/widgets/BarChartView";
+import LineChartView from "components/widgets/LineChartView";
 import Table from "components/widgets/Table";
 import uniqueId from "lodash/uniqueId";
 import React, { useState } from "react";
 import { convertToJson, getExention, randomHSL } from "utils/Common";
 import XLSX from "xlsx";
+
+const Input = styled("input")({
+  display: "none",
+});
 
 export default function LandingPage() {
   const [colDefs, setColDefs] = useState();
@@ -25,7 +34,7 @@ export default function LandingPage() {
       const fileData = XLSX.utils.sheet_to_json(workSheet, { header: 1 });
       const headers = fileData[0];
       const heads = headers.map((head) => ({
-        title: head,
+        name: head,
         field: head,
         id: uniqueId(),
         stroke: randomHSL(),
@@ -47,17 +56,36 @@ export default function LandingPage() {
       setColDefs([]);
     }
   };
-
+  // const downloadExcel = () => {};
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex" }} bgcolor="primary.light">
       <CssBaseline />
       <NavBar />
       {colDefs && colDefs.length && <ColDrawer colDefs={colDefs} />}
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar />
-        <h4 align="left">
-          <input type="file" onChange={importExcel} />
-        </h4>
+        <Stack spacing={8} direction="row">
+          <label htmlFor="button-file">
+            <Input id="button-file" onChange={importExcel} type="file" />
+            <Button
+              variant="contained"
+              color="success"
+              startIcon={<FileUploadIcon />}
+            >
+              Upload Excel
+            </Button>
+          </label>
+          <a id="sample-file" href="./public/Sample_Data.xlsx" download>
+            <Button
+              variant="contained"
+              color="success"
+              startIcon={<FileDownloadIcon />}
+            >
+              Sample Excel
+            </Button>
+          </a>
+        </Stack>
+        <hr />
         <Table data={data} />
         <BarChartView data={data} />
         <LineChartView data={data} />

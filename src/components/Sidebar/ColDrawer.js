@@ -5,8 +5,10 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
 import Column from "components/Sidebar/Column";
 import React from "react";
+import { Scrollbars } from "react-custom-scrollbars";
 
 const drawerWidth = 240;
 
@@ -23,18 +25,25 @@ function ColDrawer({ colDefs }) {
         },
       }}
     >
-      <Toolbar />
-      <Box sx={{ overflow: "auto" }}>
-        <List>
-          <ListItem>
-            <ListItemText>
-              <strong>Columns</strong>
-            </ListItemText>
-          </ListItem>
-          <Divider />
-          {colDefs && colDefs.map((col) => <Column key={col.id} col={col} />)}
-        </List>
-      </Box>
+      <Scrollbars style={{ width: "100%", height: "100%" }}>
+        <Toolbar />
+        <Box sx={{ overflow: "auto" }}>
+          <List>
+            <ListItem>
+              <ListItemText
+                disableTypography
+                primary={
+                  <Typography variant="h4" color="primary">
+                    Columns
+                  </Typography>
+                }
+              />
+            </ListItem>
+            <Divider />
+            {colDefs && colDefs.map((col) => <Column key={col.id} col={col} />)}
+          </List>
+        </Box>
+      </Scrollbars>
     </Drawer>
   );
 }

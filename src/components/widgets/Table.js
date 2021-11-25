@@ -1,5 +1,5 @@
-import MaterialTable from "material-table";
-import React, { useState, useEffect } from "react";
+import MUIDataTable from "mui-datatables";
+import React, { useEffect, useState } from "react";
 import { useDrop } from "react-dnd";
 import { addCol, drop } from "utils/Common";
 
@@ -13,10 +13,15 @@ function Table({ data }) {
   }, [data]);
   return (
     <div ref={dropTable}>
-      <MaterialTable
+      <MUIDataTable
         title="Table View"
         data={tableCols.length ? data : []}
         columns={tableCols}
+        options={{
+          filter: true,
+          sort: true,
+          selectableRows: "none",
+        }}
       />
     </div>
   );

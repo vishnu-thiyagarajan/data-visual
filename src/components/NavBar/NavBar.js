@@ -6,6 +6,7 @@ import React from "react";
 function NavBar() {
   return (
     <AppBar
+      color="primary"
       position="fixed"
       sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
     >

@@ -25,7 +25,7 @@ export const addCol = (setterFunc) => {
     setterFunc((cols) => {
       const prevLen = cols.length;
       cols = Array.from(new Set([...cols, column]));
-      if (prevLen === cols.length) alert(`${column.title} is already added`);
+      if (prevLen === cols.length) alert(`${column.name} is already added`);
       return cols;
     });
   };

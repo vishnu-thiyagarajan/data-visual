@@ -1,6 +1,6 @@
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDrop } from "react-dnd";
 import {
   Bar,
@@ -22,7 +22,12 @@ function BarChartView({ data }) {
   // eslint-disable-next-line no-unused-vars
   const [collectedProps, dropBar] = useDrop(drop(addColToBar));
   return (
-    <Card ref={dropBar} width="100%" style={{ marginTop: "2rem" }}>
+    <Card
+      ref={dropBar}
+      width="100%"
+      style={{ marginTop: "2rem" }}
+      elevation={10}
+    >
       <Typography style={{ margin: "1.5rem" }} variant="h6">
         Bar Chart View
       </Typography>
@@ -36,7 +41,7 @@ function BarChartView({ data }) {
           barCols.map((col) => (
             <Bar
               key={col.id}
-              dataKey={col.title}
+              dataKey={col.name}
               fill={col.stroke}
               background={{ fill: "#eee" }}
             />

@@ -1,5 +1,6 @@
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import "components/Sidebar/sidebar.css";
 import React from "react";
 import { useDrag } from "react-dnd";
 
@@ -12,11 +13,8 @@ function Column(props) {
     }),
   }));
   return (
-    <ListItem
-      ref={drag}
-      style={{ border: isDragging ? "5px solid pink" : "0px" }}
-    >
-      <ListItemText primary={props.col.title} />
+    <ListItem ref={drag} className={isDragging ? "highlightcol" : ""}>
+      <ListItemText primary={props.col.name} />
     </ListItem>
   );
 }
